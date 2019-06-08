@@ -12,7 +12,7 @@ environment:
 
 build_script:
 
-- ps: dotnet pack DiscordBotTemplates.Discord.Net/DiscordBotTemplates.Discord.Net.csproj
+- ps: dotnet pack -c Release DiscordBotTemplates.Discord.Net/DiscordBotTemplates.Discord.Net.csproj
 
 test: off
 
