@@ -10,7 +10,9 @@ environment:
 
     secure: a1yMnPPhFaMgpXPmwZe5kB5WzhBl5MMEOjAeQO3DmEtzylhJ/hAS8t0Dze16jL0J
 
-build: off
+build_script:
+
+- ps: dotnet pack DiscordBotTemplates.Discord.Net/DiscordBotTemplates.Discord.Net.csproj
 
 test: off
 
