@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <IncludeBuildOutput>False</IncludeBuildOutput>
+    <IncludeSource>False</IncludeSource>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <OutputPath>$(TemplatesPath)</OutputPath>
+    <EnableDefaultItems>False</EnableDefaultItems>
+    <IsPackable>True</IsPackable>
+    <PackageId>DiscordBotTemplates</PackageId>
+    <Authors>trinitrotoluene</Authors>
+    <Description>Discord bot templates using ASP.Net GenericHost.</Description>
+    <PackageProjectUrl>https://github.com/trinitrot0luene/DiscordBotTemplates</PackageProjectUrl>
+    <PackageType>Template</PackageType>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Remove="Microsoft.NETCore.App" />
+    <Content Include="content\**">
+      <PackagePath>content</PackagePath>
+    </Content>
+  </ItemGroup>
+
+</Project>

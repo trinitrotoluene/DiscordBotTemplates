@@ -12,15 +12,17 @@ environment:
 
 build_script:
 
-- ps: dotnet pack -c Release DiscordBotTemplates.Discord.Net/DiscordBotTemplates.Discord.Net.csproj
+- ps: $Env:Version += if ($Env:APPVEYOR_REPO_TAG_NAME -eq $null) { $Env:APPVEYOR_BUILD_VERSION } else { $Env:APPVEYOR_REPO_TAG_NAME }
+- ps: $Env:VersionSuffix += if ($Env:APPVEYOR_REPO_TAG_NAME -eq $null) { "pre+$Env:APPVEYOR_REPO_COMMIT" } else { "" }
+- ps: dotnet pack DiscordBotTemplates/DiscordBotTemplates.csproj -p:TemplatesPath=./bin -p:VersionPrefix=$Env:Version -p:VersionSuffix=$Env:VersionSuffix
 
 test: off
 
 artifacts:
 
-- path: DiscordBotTemplates.Discord.Net\bin\Release\*.nupkg
+- path: DiscordBotTemplates\bin\*.nupkg
 
-  name: dnetpackage
+  name: templates
 
 deploy:
 
@@ -32,4 +34,4 @@ deploy:
 
   skip_symbols: true
 
-  artifact: dnetpackage
+  artifact: templates

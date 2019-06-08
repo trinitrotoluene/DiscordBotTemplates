@@ -2,13 +2,15 @@
     "$schema": "http://json.schemastore.org/template",
     "author": "trinitrotoluene",
     "classifications": [ "Common", "Console" ],
+	"groupIdentity": "DiscordBotTemplates",
     "identity": "DiscordBotTemplates.Discord.Net",
     "name": "Discord.Net Bot",
     "shortName": "dnet",
+	"description": "A project for creating a Discord bot using the GenericHost API, using Discord.Net",
     "tags": {
 	    "language": "C#",
 	    "type": "project"
     },
-    "sourceName": "content",
+    "sourceName": "DiscordBotTemplates.Discord.Net",
     "preferNameDirectory": true
 }
