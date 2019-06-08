@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace $safeprojectname$.Services
+namespace content.Services
 {
     internal sealed class SampleEventHandler
     {

@@ -2,10 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using $safeprojectname$.Services;
+using content.Services;
 using System.Threading.Tasks;
 
-namespace $safeprojectname$
+namespace content
 {
     internal sealed class Startup
     {
@@ -19,7 +19,7 @@ namespace $safeprojectname$
 #endif
                 .ConfigureAppConfiguration(config => 
                 {
-                    config.AddEnvironmentVariables(prefix: "$safeprojectname$_")
+                    config.AddEnvironmentVariables(prefix: "content_")
                         // .AddJsonFile("config.json")
                         .AddCommandLine(args);
 #if DEBUG
