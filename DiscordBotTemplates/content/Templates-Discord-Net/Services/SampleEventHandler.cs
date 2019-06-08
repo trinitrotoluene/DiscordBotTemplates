@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace content.Services
+namespace DiscordBotTemplates.Discord.Net.Services
 {
     internal sealed class SampleEventHandler
     {
@@ -17,7 +17,7 @@ namespace content.Services
 
         private Task PingHandler(SocketMessage msg)
         {
-            if (msg.Content.Equals("!ping", StringComparison.OrdinalIgnoreCase))
+            if (msg.DiscordBotTemplates.Discord.Net.Equals("!ping", StringComparison.OrdinalIgnoreCase))
             {
                 return msg.Channel.SendMessageAsync("Pong!");
             }

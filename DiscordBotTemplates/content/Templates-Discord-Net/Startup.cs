@@ -2,10 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using content.Services;
+using DiscordBotTemplates.Discord.Net.Services;
 using System.Threading.Tasks;
 
-namespace content
+namespace DiscordBotTemplates.Discord.Net
 {
     internal sealed class Startup
     {
@@ -19,7 +19,7 @@ namespace content
 #endif
                 .ConfigureAppConfiguration(config => 
                 {
-                    config.AddEnvironmentVariables(prefix: "content_")
+                    config.AddEnvironmentVariables(prefix: "DiscordBotTemplates.Discord.Net_")
                         // .AddJsonFile("config.json")
                         .AddCommandLine(args);
 #if DEBUG

@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace content.Services
+namespace DiscordBotTemplates.Discord.Net.Services
 {
     internal sealed class DiscordBotService : IHostedService
     {
