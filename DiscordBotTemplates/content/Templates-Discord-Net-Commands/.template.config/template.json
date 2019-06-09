@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "trinitrotoluene",
+  "classifications": [ "Common", "Console" ],
+	"groupIdentity": "DiscordBotTemplates.Discord.Net.Commands",
+  "identity": "DiscordBotTemplates.Discord.Net.Commands",
+  "name": "Discord.Net Bot (Discord.Commands)",
+  "shortName": "dnet-commands",
+	"description": "A project for creating a Discord bot using the GenericHost API, using Discord.Net. This template also includes the Discord.Commands CommandService and a sample command handler.",
+  "tags": {
+	  "language": "C#",
+	  "type": "project"
+  },
+  "sourceName": "DiscordBotTemplates.Discord.Net",
+  "preferNameDirectory": true,
+  "target":  "./"
+}
