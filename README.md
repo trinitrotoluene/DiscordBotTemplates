@@ -15,6 +15,7 @@ ASP.NET's [Generic Host](https://docs.microsoft.com/en-us/aspnet/core/fundamenta
 
 ```
 - dnet (Discord.Net)
+- dnet-commands (Discord.Net using Discord.Commands)
 ```
 
 The plan is to include a template for all DAPI-approved or mainstream .NET Discord libraries. If you'd like to contribute to a template or would like to request that a template be added for your library, please open an issue or make a pull request as appropriate!
