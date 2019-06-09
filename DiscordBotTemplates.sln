@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBotTemplates.Discord.Net", "DiscordBotTemplates.Discord.Net\DiscordBotTemplates.Discord.Net.csproj", "{A620AB5D-2C1E-4E7B-9799-1AD7683A601B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBotTemplates", "DiscordBotTemplates\DiscordBotTemplates.csproj", "{A1E8417C-D1E4-49C9-AB21-5815B554F857}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CBF4A089-6032-4862-B200-531E2DE007CF}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +16,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A620AB5D-2C1E-4E7B-9799-1AD7683A601B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A620AB5D-2C1E-4E7B-9799-1AD7683A601B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A620AB5D-2C1E-4E7B-9799-1AD7683A601B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A620AB5D-2C1E-4E7B-9799-1AD7683A601B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1E8417C-D1E4-49C9-AB21-5815B554F857}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E8417C-D1E4-49C9-AB21-5815B554F857}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E8417C-D1E4-49C9-AB21-5815B554F857}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E8417C-D1E4-49C9-AB21-5815B554F857}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
