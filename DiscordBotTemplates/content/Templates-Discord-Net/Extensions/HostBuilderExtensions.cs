@@ -1,5 +1,4 @@
-﻿using Discord.Commands;
-using Discord.WebSocket;
+﻿using Discord.WebSocket;
 using Microsoft.Extensions.Hosting;
 using System;
 
@@ -18,22 +17,6 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 services.AddSingleton(config);
                 services.AddSingleton(client);
-            });
-
-            return builder;
-        }
-
-        public static IHostBuilder ConfigureCommands(this IHostBuilder builder, Action<CommandServiceConfig> configureOptions)
-        {
-            var config = new CommandServiceConfig();
-            configureOptions(config);
-
-            var commands = new CommandService(config);
-
-            builder.ConfigureServices(services =>
-            {
-                services.AddSingleton(config);
-                services.AddSingleton(commands);
             });
 
             return builder;

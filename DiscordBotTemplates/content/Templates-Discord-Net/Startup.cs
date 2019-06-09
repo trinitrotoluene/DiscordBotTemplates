@@ -32,10 +32,6 @@ namespace DiscordBotTemplates.Discord.Net
                 {
                     // Configure your DiscordSocketClient here, or keep the default settings.
                 })
-                .ConfigureCommands(options => 
-                {
-                    // Configure your CommandService here, or keep the default settings.
-                })
                 .ConfigureServices((context, services) => 
                 {
                     // Add services to your IOC container.
