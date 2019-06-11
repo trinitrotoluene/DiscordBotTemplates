@@ -6,6 +6,7 @@
 This project exists solely to take some of the boilerplate and hassle out of creating your initial Discord bot setup. For questions regarding how to do X or what to do if Y happens, please refer to the documentation and avenues of support provided by the libraries themselves!
 
 - [Discord.Net](https://github.com/discord-net/Discord.Net)
+- [DSharpPlus](https://github.com/DSharpPlus/DSharpPlus)
 
 ## Discord Bot Templates
 
@@ -14,9 +15,10 @@ ASP.NET's [Generic Host](https://docs.microsoft.com/en-us/aspnet/core/fundamenta
 ## Currently Included Project ShortNames
 
 ```
-- dnet (Discord.Net)
-- dnet-commands (Discord.Net using Discord.Commands)
-- dnet-qmmands (Discord.Net using Qmmands)
+- dnet          (Discord.Net, Minimal)
+- dnet-commands (Discord.Net, Discord.Commands)
+- dnet-qmmands  (Discord.Net, Qmmands)
+- dsharpplus    (DSharpPlus, Minimal)
 ```
 
 The plan is to include a template for all DAPI-approved or mainstream .NET Discord libraries. If you'd like to contribute to a template or would like to request that a template be added for your library, please open an issue or make a pull request as appropriate!
@@ -27,7 +29,7 @@ The plan is to include a template for all DAPI-approved or mainstream .NET Disco
 ```
 dotnet new --install DiscordBotTemplates
 ```
-2. Navigate to a directory you'd like to create the project in.
+2. Navigate to a directory you'd like to create the project in. The (Discord.Net, Minimal) template is used in this example. Swap it out with a different shortname as required.
 ```
 mkdir MyNewProject
 dotnet new dnet
