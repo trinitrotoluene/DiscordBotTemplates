@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "trinitrotoluene",
+  "classifications": [ "Common", "Console" ],
+	"groupIdentity": "DiscordBotTemplates.DSharpPlus.CNext",
+  "identity": "DiscordBotTemplates.DSharpPlus.CNext",
+  "name": "DSharpPlus Bot (CNext)",
+  "shortName": "dsharpplus-cnext",
+	"description": "A project for creating a Discord bot using the GenericHost API, using DSharpPlus and DSharpPlus.CNext",
+  "tags": {
+	  "language": "C#",
+	  "type": "project"
+  },
+  "sourceName": "DiscordBotTemplates.DSharpPlus",
+  "preferNameDirectory": true,
+  "target":  "./"
+}
