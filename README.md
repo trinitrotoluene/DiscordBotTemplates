@@ -16,6 +16,7 @@ ASP.NET's [Generic Host](https://docs.microsoft.com/en-us/aspnet/core/fundamenta
 ```
 - dnet (Discord.Net)
 - dnet-commands (Discord.Net using Discord.Commands)
+- dnet-qmmands (Discord.Net using Qmmands)
 ```
 
 The plan is to include a template for all DAPI-approved or mainstream .NET Discord libraries. If you'd like to contribute to a template or would like to request that a template be added for your library, please open an issue or make a pull request as appropriate!
@@ -35,6 +36,9 @@ dotnet new dnet
 ```
 dotnet run --token=<your_discord_bot_token>
 ```
+
+Note that some templates will require more than just the `token` configuration variable to be set. These requirements will be flagged by preprocessor warnings.
+
 4. Open the template in your IDE or text editor of choice, and start working on your new project! Please ensure you read the defined warnings carefully before you start.
 
 ## Updating
