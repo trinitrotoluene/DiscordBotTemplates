@@ -11,7 +11,7 @@
     <PackageId>DiscordBotTemplates</PackageId>
     <Authors>trinitrotoluene</Authors>
     <Description>Discord bot templates using ASP.Net GenericHost.</Description>
-    <PackageProjectUrl>https://github.com/trinitrot0luene/DiscordBotTemplates</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/trinitrotoluene/DiscordBotTemplates</PackageProjectUrl>
     <PackageType>Template</PackageType>
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
   </PropertyGroup>
