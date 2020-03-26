@@ -30,7 +30,7 @@ deploy:
 
   api_key:
 
-    secure: a1yMnPPhFaMgpXPmwZe5kB5WzhBl5MMEOjAeQO3DmEtzylhJ/hAS8t0Dze16jL0J
+    secure: kWzmUr9Hg/i59uqUmZh/bd2fQFpoF+IhQnCQViO3xGhlwAGg1/6gwn9g7mvePMAD
 
   skip_symbols: true
 
