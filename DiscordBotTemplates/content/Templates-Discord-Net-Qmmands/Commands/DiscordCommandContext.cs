@@ -1,9 +1,10 @@
-﻿using Discord.WebSocket;
+﻿using System;
+using Discord.WebSocket;
 using Qmmands;
 
 namespace DiscordBotTemplates.Discord.Net.Commands
 {
-    public class CommandContext : ICommandContext
+    public class DiscordCommandContext : CommandContext
     {
         public DiscordSocketClient Client { get; }
 
@@ -17,7 +18,7 @@ namespace DiscordBotTemplates.Discord.Net.Commands
 
         public SocketGuildUser Member { get; }
 
-        public CommandContext(DiscordSocketClient client, SocketUserMessage message)
+        public DiscordCommandContext(DiscordSocketClient client, SocketUserMessage message, IServiceProvider services) : base(services)
         {
             this.Client = client;
             this.Message = message;

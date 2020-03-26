@@ -13,9 +13,9 @@ namespace DiscordBotTemplates.Discord.Net
         {
             var hostingTask = new HostBuilder()
 #if DEBUG
-                .UseEnvironment(EnvironmentName.Development)
+                .UseEnvironment(Environments.Development)
 #else
-                .UseEnvironment(EnvironmentName.Production)
+                .UseEnvironment(Environments.Production)
 #endif
                 .ConfigureAppConfiguration(config => 
                 {
@@ -48,7 +48,7 @@ namespace DiscordBotTemplates.Discord.Net
                 {
                     logging.ClearProviders();
                     logging.AddConsole();
-                    logging.SetMinimumLevel(context.HostingEnvironment.EnvironmentName == EnvironmentName.Development
+                    logging.SetMinimumLevel(context.HostingEnvironment.EnvironmentName == Environments.Development
                         ? LogLevel.Debug
                         : LogLevel.Information);
                 })

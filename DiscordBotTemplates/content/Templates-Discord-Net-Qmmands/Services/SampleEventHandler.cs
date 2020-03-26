@@ -42,9 +42,9 @@ namespace DiscordBotTemplates.Discord.Net.Services
                 return;
             }
 
-            var context = new CommandContext(this._client, message);
+            var context = new DiscordCommandContext(this._client, message, this._services);
 
-            IResult res = await this._commands.ExecuteAsync(output, context, this._services);
+            IResult res = await this._commands.ExecuteAsync(output, context);
             switch (res)
             {
                 case FailedResult fRes:
