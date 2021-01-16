@@ -7,7 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBotTemplates", "Disc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CBF4A089-6032-4862-B200-531E2DE007CF}"
 	ProjectSection(SolutionItems) = preProject
-		appveyor.yml = appveyor.yml
+		.github\workflows\deploy-release.yml = .github\workflows\deploy-release.yml
+		.github\workflows\deploy-prerelease.yml = .github\workflows\deploy-prerelease.yml
 	EndProjectSection
 EndProject
 Global

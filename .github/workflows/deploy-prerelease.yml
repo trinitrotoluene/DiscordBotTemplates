@@ -1,0 +1,24 @@
+name: NuGet Deploy (Prerelease)
+
+on:
+  push:
+    branches: [ master ]
+
+env:
+  VERSION_SUFFIX: beta-${{ github.run_number }}
+
+jobs:
+  publish-prerelease:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.100
+      - name: Pack templates
+        run: dotnet pack -c Release DiscordBotTemplates/DiscordBotTemplates.csproj --version-suffix $VERSION_SUFFIX
+
+      - name: Upload templates
+        run: dotnet nuget push DiscordBotTemplates/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json
