@@ -10,10 +10,13 @@
     <IsPackable>True</IsPackable>
     <PackageId>DiscordBotTemplates</PackageId>
     <Authors>trinitrotoluene</Authors>
-    <Description>Discord bot templates using ASP.Net GenericHost.</Description>
+    <Description>A dotnet-new template package including Discord bot templates for popular .NET libraries.</Description>
     <PackageProjectUrl>https://github.com/trinitrotoluene/DiscordBotTemplates</PackageProjectUrl>
     <PackageType>Template</PackageType>
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <RepositoryUrl>https://github.com/trinitrotoluene/DiscordBotTemplates</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>discord bot templates dotnet-new</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
