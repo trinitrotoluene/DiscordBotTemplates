@@ -1,4 +1,5 @@
-![AppVeyor](https://img.shields.io/appveyor/ci/trinitrot0luene/DiscordBotTemplates.svg?style=popout)
+![NuGet Deploy (Release)](https://github.com/trinitrotoluene/DiscordBotTemplates/workflows/NuGet%20Deploy%20(Release)/badge.svg)
+![NuGet Deploy (Prerelease)](https://github.com/trinitrotoluene/DiscordBotTemplates/workflows/NuGet%20Deploy%20(Prerelease)/badge.svg)
 ![Nuget](https://img.shields.io/nuget/v/DiscordBotTemplates.svg?label=DiscordBotTemplates&style=popout)
 
 ## Library Links
