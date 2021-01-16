@@ -42,7 +42,7 @@ namespace DiscordBotTemplates.Discord.Net
                     services.AddHostedService<DiscordBotService>();
 
                     // Event handler supplied as an example.
-                    services.AddSingleton<SampleEventHandler>();
+                    services.AddHostedService<SampleEventHandler>();
                 })
                 .ConfigureLogging((context, logging) => 
                 {

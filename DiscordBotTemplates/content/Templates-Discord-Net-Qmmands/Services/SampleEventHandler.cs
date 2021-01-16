@@ -3,12 +3,14 @@ using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using DiscordBotTemplates.Discord.Net.Commands;
+using Microsoft.Extensions.Hosting;
 
 namespace DiscordBotTemplates.Discord.Net.Services
 {
-    internal sealed class SampleEventHandler
+    internal sealed class SampleEventHandler : IHostedService
     {
         private readonly ILogger<SampleEventHandler> _logger;
         private readonly DiscordSocketClient _client;
@@ -18,13 +20,25 @@ namespace DiscordBotTemplates.Discord.Net.Services
 
         public SampleEventHandler(ILogger<SampleEventHandler> logger, DiscordSocketClient client, CommandService commands, IConfiguration config, IServiceProvider services)
         {
-            this._logger = logger;
-            this._client = client;
-            this._commands = commands;
-            this._config = config;
-            this._services = services;
+            _logger = logger;
+            _client = client;
+            _commands = commands;
+            _config = config;
+            _services = services;
+        }
+        
+        public Task StartAsync(CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Hooking events");
+            _client.MessageReceived += CommandHandler;
+            return Task.CompletedTask;
+        }
 
-            this._client.MessageReceived += CommandHandler;
+        public Task StopAsync(CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Unhooking events");
+            _client.MessageReceived -= CommandHandler;
+            return Task.CompletedTask;
         }
 
         private async Task CommandHandler(SocketMessage msg)
@@ -42,13 +56,13 @@ namespace DiscordBotTemplates.Discord.Net.Services
                 return;
             }
 
-            var context = new DiscordCommandContext(this._client, message, this._services);
+            var context = new DiscordCommandContext(_client, message, _services);
 
-            IResult res = await this._commands.ExecuteAsync(output, context);
+            IResult res = await _commands.ExecuteAsync(output, context);
             switch (res)
             {
                 case FailedResult fRes:
-                    this._logger.LogError("Command execution failed with reason: {0}", fRes.Reason);
+                    _logger.LogError("Command execution failed with reason: {0}", fRes.Reason);
                     break;
             }
         }

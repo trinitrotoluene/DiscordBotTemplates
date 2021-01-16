@@ -6,9 +6,9 @@ namespace DiscordBotTemplates.Discord.Net.Commands
 {
     public abstract class DiscordModuleBase : ModuleBase<DiscordCommandContext>
     {
-        protected Task ReplyAsync(string message = null, bool isTTS = false, Embed embed = null, RequestOptions requestOptions = null)
+        protected Task ReplyAsync(string message = null, bool isTts = false, Embed embed = null, RequestOptions requestOptions = null)
         {
-            return this.Context.Channel.SendMessageAsync(message, isTTS, embed, requestOptions);
+            return Context.Channel.SendMessageAsync(message, isTts, embed, requestOptions);
         }
     }
 }
