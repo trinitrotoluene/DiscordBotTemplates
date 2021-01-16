@@ -22,33 +22,33 @@ namespace DiscordBotTemplates.DSharpPlus.Services
             IServiceProvider services, 
             DiscordClient client)
         {
-            this._logger = logger;
-            this._config = config;
-            this._services = services;
-            this._client = client;
+            _logger = logger;
+            _config = config;
+            _services = services;
+            _client = client;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            this._logger.LogInformation("Service starting up");
+            _logger.LogInformation("Service starting up");
 
-            this._logger.LogInformation("Connecting the Discord client");
+            _logger.LogInformation("Connecting the Discord client");
 
-            await this._client.ConnectAsync();
+            await _client.ConnectAsync();
 
-            this._logger.LogInformation("Client started up successfully");
+            _logger.LogInformation("Client started up successfully");
         }
 
         public async Task StopAsync(CancellationToken cancellationToken)
         {
-            this._logger.LogInformation("Service stopping");
+            _logger.LogInformation("Service stopping");
 
-            using (this._client)
+            using (_client)
             {
-                await this._client.DisconnectAsync();
+                await _client.DisconnectAsync();
             }
 
-            this._logger.LogInformation("Services disposed, shutdown complete.");
+            _logger.LogInformation("Services disposed, shutdown complete.");
         }
     }
 }

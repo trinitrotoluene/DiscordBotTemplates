@@ -18,27 +18,27 @@ namespace DiscordBotTemplates.DSharpPlus.Services
 
         public CommandsNextRegistrationService(ILogger<CommandsNextRegistrationService> logger, DiscordClient client, CommandsNextConfiguration cnextConfig = null)
         {
-            this._logger = logger;
-            this._client = client;
-            this._cnextConfig = cnextConfig;
+            _logger = logger;
+            _client = client;
+            _cnextConfig = cnextConfig;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
             if (_cnextConfig == null)
             {
-                this._logger.LogWarning("No CommandsNextConfiguration was found. If you aren't using CNext, unregister this service!");
+                _logger.LogWarning("No CommandsNextConfiguration was found. If you aren't using CNext, unregister this service!");
                 return Task.CompletedTask;
             }
 
-            this._cnext = this._client.UseCommandsNext(this._cnextConfig);
+            _cnext = _client.UseCommandsNext(_cnextConfig);
 
-            this._cnext.RegisterCommands(Assembly.GetEntryAssembly());
+            _cnext.RegisterCommands(Assembly.GetEntryAssembly());
 
-            this._cnext.CommandExecuted += LogExecutedCommand;
-            this._cnext.CommandErrored += LogErroredCommand;
+            _cnext.CommandExecuted += LogExecutedCommand;
+            _cnext.CommandErrored += LogErroredCommand;
 
-            this._logger.LogInformation("Registered {0} commands successfully", this._cnext.RegisteredCommands.Count);
+            _logger.LogInformation("Registered {0} commands successfully", _cnext.RegisteredCommands.Count);
             
             return Task.CompletedTask;
         }
@@ -50,7 +50,7 @@ namespace DiscordBotTemplates.DSharpPlus.Services
 
         private Task LogErroredCommand(CommandErrorEventArgs e)
         {
-            this._logger.LogError("An exception was thrown while executing command '{0}' for user '{1}'.\r\n{2}",
+            _logger.LogError("An exception was thrown while executing command '{0}' for user '{1}'.\r\n{2}",
                 e.Command.Name,
                 e.Context.User.ToString(),
                 e.Exception.StackTrace);
@@ -60,7 +60,7 @@ namespace DiscordBotTemplates.DSharpPlus.Services
 
         private Task LogExecutedCommand(CommandExecutionEventArgs e)
         {
-            this._logger.LogInformation("Executed command '{0}' for user '{1}' in guild '{2}'", 
+            _logger.LogInformation("Executed command '{0}' for user '{1}' in guild '{2}'", 
                 e.Command.Name, 
                 e.Context.User.ToString(),
                 e.Context.Guild.Name ?? "N/A (Direct Message)");
