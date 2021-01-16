@@ -20,54 +20,52 @@ namespace DiscordBotTemplates.Discord.Net.Services
         private readonly DiscordSocketClient _client;
         private readonly CommandService _commands;
 
-        public DiscordBotService(ILogger<DiscordBotService> logger, IConfiguration config, IServiceProvider services, DiscordSocketClient client, CommandService commands, /* See comment */ SampleEventHandler eventHandler)
+        public DiscordBotService(ILogger<DiscordBotService> logger, IConfiguration config, IServiceProvider services, DiscordSocketClient client, CommandService commands)
         {
-            this._logger = logger;
-            this._config = config;
-            this._services = services;
-            this._client = client;
-            this._commands = commands;
+            _logger = logger;
+            _config = config;
+            _services = services;
+            _client = client;
+            _commands = commands;
 
-            this._client.Log += HandleLog;
-            this._commands.Log += HandleLog;
-
-            // When it is injected, the IOC container calls the constructor of SampleEventHandler, which registers its hooks with the DiscordSocketClient.
+            _client.Log += HandleLog;
+            _commands.Log += HandleLog;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            this._logger.LogInformation("Service starting up");
+            _logger.LogInformation("Service starting up");
 
             #warning If your commands are in a different assembly, you should edit this line appropriately.
-            await this._commands.AddModulesAsync(Assembly.GetEntryAssembly(), this._services);
+            await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
 
-            this._logger.LogInformation("Registered {0} commands in {1} modules", 
-                this._commands.Commands.Count(), 
-                this._commands.Modules.Count());
+            _logger.LogInformation("Registered {0} commands in {1} modules", 
+                _commands.Commands.Count(), 
+                _commands.Modules.Count());
 
-            this._logger.LogInformation("Connecting the Discord client");
+            _logger.LogInformation("Connecting the Discord client");
 
             #warning Ensure that this configuration variable is set.
-            await this._client.LoginAsync(TokenType.Bot, this._config["token"], true);
+            await _client.LoginAsync(TokenType.Bot, _config["token"]);
 
-            await this._client.StartAsync();
+            await _client.StartAsync();
 
-            this._logger.LogInformation("Client started up successfully");
+            _logger.LogInformation("Client started up successfully");
         }
 
         public async Task StopAsync(CancellationToken cancellationToken)
         {
-            this._logger.LogInformation("Service stopping");
+            _logger.LogInformation("Service stopping");
 
-            using (this._client)
-            using (this._commands)
+            using (_client)
+            using (_commands)
             {
-                await this._client.StopAsync();
+                await _client.StopAsync();
 
-                await this._client.LogoutAsync();
+                await _client.LogoutAsync();
             }
 
-            this._logger.LogInformation("Services disposed, shutdown complete.");
+            _logger.LogInformation("Services disposed, shutdown complete.");
         }
 
         private Task HandleLog(LogMessage msg)
@@ -75,22 +73,22 @@ namespace DiscordBotTemplates.Discord.Net.Services
             switch (msg.Severity)
             {
                 case LogSeverity.Critical:
-                    this._logger.LogCritical(msg.Message);
+                    _logger.LogCritical(msg.Message);
                     break;
                 case LogSeverity.Error:
-                    this._logger.LogError(msg.Message);
+                    _logger.LogError(msg.Message);
                     break;
                 case LogSeverity.Warning:
-                    this._logger.LogWarning(msg.Message);
+                    _logger.LogWarning(msg.Message);
                     break;
                 case LogSeverity.Info:
-                    this._logger.LogInformation(msg.Message);
+                    _logger.LogInformation(msg.Message);
                     break;
                 case LogSeverity.Verbose:
-                    this._logger.LogDebug(msg.Message);
+                    _logger.LogDebug(msg.Message);
                     break;
                 case LogSeverity.Debug:
-                    this._logger.LogTrace(msg.Message);
+                    _logger.LogTrace(msg.Message);
                     break;
             }
 

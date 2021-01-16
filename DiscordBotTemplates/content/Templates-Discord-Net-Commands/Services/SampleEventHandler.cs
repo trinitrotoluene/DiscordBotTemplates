@@ -3,11 +3,13 @@ using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
 
 namespace DiscordBotTemplates.Discord.Net.Services
 {
-    internal sealed class SampleEventHandler
+    internal sealed class SampleEventHandler : IHostedService
     {
         private readonly ILogger<SampleEventHandler> _logger;
         private readonly DiscordSocketClient _client;
@@ -17,13 +19,11 @@ namespace DiscordBotTemplates.Discord.Net.Services
 
         public SampleEventHandler(ILogger<SampleEventHandler> logger, DiscordSocketClient client, CommandService commands, IConfiguration config, IServiceProvider services)
         {
-            this._logger = logger;
-            this._client = client;
-            this._commands = commands;
-            this._config = config;
-            this._services = services;
-
-            this._client.MessageReceived += CommandHandler;
+            _logger = logger;
+            _client = client;
+            _commands = commands;
+            _config = config;
+            _services = services;
         }
 
         private async Task CommandHandler(SocketMessage msg)
@@ -37,23 +37,36 @@ namespace DiscordBotTemplates.Discord.Net.Services
             // Respond to both mentions and your prefix.
             #warning Ensure that this configuration variable is set.
             int argPos = 0;
-            if (message.HasStringPrefix(this._config["prefix"], ref argPos)
-                || message.HasMentionPrefix(this._client.CurrentUser, ref argPos))
+            if (message.HasStringPrefix(_config["prefix"], ref argPos)
+                || message.HasMentionPrefix(_client.CurrentUser, ref argPos))
             {
                 IResult result = null;
                 try
                 {
-                    var context = new SocketCommandContext(this._client, message);
-                    result = await _commands.ExecuteAsync(context, argPos, this._services, MultiMatchHandling.Exception);
+                    var context = new SocketCommandContext(_client, message);
+                    result = await _commands.ExecuteAsync(context, argPos, _services);
                 }
                 finally
                 {
                     if (!result?.IsSuccess ?? false)
                     {
-                        this._logger.LogError("Error Type: {0}{1}Error Reason: {2}", result.Error, Environment.NewLine, result.ErrorReason);
+                        _logger.LogError("Error Type: {0}{1}Error Reason: {2}", result.Error, Environment.NewLine, result.ErrorReason);
                     }
                 }
             }
+        }
+
+        public Task StartAsync(CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Hooking events");
+            _client.MessageReceived += CommandHandler;
+            return Task.CompletedTask;
+        }
+
+        public Task StopAsync(CancellationToken cancellationToken)
+        {
+            _logger.LogInformation("Unhooking events");
+            return Task.CompletedTask;
         }
     }
 }

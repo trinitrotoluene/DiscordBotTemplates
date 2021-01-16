@@ -13,9 +13,9 @@ namespace DiscordBotTemplates.Discord.Net
         {
             var hostingTask = new HostBuilder()
 #if DEBUG
-                .UseEnvironment(EnvironmentName.Development)
+                .UseEnvironment(Environments.Development)
 #else
-                .UseEnvironment(EnvironmentName.Production)
+                .UseEnvironment(Environments.Production)
 #endif
                 .ConfigureAppConfiguration(config => 
                 {
@@ -42,7 +42,7 @@ namespace DiscordBotTemplates.Discord.Net
                     services.AddHostedService<DiscordBotService>();
 
                     // Event handler supplied as an example.
-                    services.AddSingleton<SampleEventHandler>();
+                    services.AddHostedService<SampleEventHandler>();
                 })
                 .ConfigureLogging((context, logging) => 
                 {
