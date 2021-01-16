@@ -25,7 +25,7 @@ namespace DiscordBotTemplates.Discord.Net
 #if DEBUG
                         // Right click on your project and select "Manage User Secrets" to use this provider.
                         // Otherwise, you can safely remove it.
-                        config.AddUserSecrets<Startup>();
+                        config.AddUserSecrets<Startup>(optional: true);
 #endif
                 })
                 .ConfigureDiscord(options => 
@@ -38,7 +38,7 @@ namespace DiscordBotTemplates.Discord.Net
                     services.AddHostedService<DiscordBotService>();
 
                     // Event handler supplied as an example.
-                    services.AddSingleton<SampleEventHandler>();
+                    services.AddHostedService<SampleEventHandler>();
                 })
                 .ConfigureLogging((context, logging) => 
                 {
